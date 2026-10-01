@@ -1,0 +1,600 @@
+{
+  "name": "Digital Detox Campaign",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "digital-detox-form",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "6cddc254-210a-4348-82d6-c22bcce777e5",
+      "name": "Webhook",
+      "webhookId": "69e9f7bf-bd55-4def-a751-93c06c3ed4d8"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "27d3b4b8-3a22-403f-a069-d7c539e8a3f7",
+              "name": "Name",
+              "value": "={{ $json.body.name }}",
+              "type": "string"
+            },
+            {
+              "id": "55e7f217-209b-43e7-82cc-b4c125b3a52b",
+              "name": "Age Group",
+              "value": "={{ $json.body.age_group }}",
+              "type": "string"
+            },
+            {
+              "id": "ccc42fbf-9dd9-46fd-88dd-4e0f35cc5fa6",
+              "name": "Screen Time",
+              "value": "={{$json.body.screen_time}}",
+              "type": "number"
+            },
+            {
+              "id": "8c8f3a8d-2587-404d-998b-b68a82c9bec5",
+              "name": "Participation",
+              "value": "={{ $json.body.participation }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "577b2a8c-9146-48d9-9083-968ad75429d6",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1O6IpUze-mdukYx7coAUtXJRV6Hr8b7D8FJJ4JFjy-rE",
+          "mode": "list",
+          "cachedResultName": "Digital Detox Responses",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1O6IpUze-mdukYx7coAUtXJRV6Hr8b7D8FJJ4JFjy-rE/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1O6IpUze-mdukYx7coAUtXJRV6Hr8b7D8FJJ4JFjy-rE/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Age Group",
+              "displayName": "Age Group",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Screen Time",
+              "displayName": "Screen Time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Participation",
+              "displayName": "Participation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Category",
+              "displayName": "Category",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email Status",
+              "displayName": "Email Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        416,
+        0
+      ],
+      "id": "e661829a-964b-4868-9aa8-929b4e0e789f",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "1UT0OotGZT8wJaL4",
+          "name": "Google Sheets account 24"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "bharathsree96@gmail.com",
+        "subject": "We see you — and we've got your back",
+        "message": "=Hi {{ $json.Name }},  We noticed you spend a significant amount of time online  — and we completely understand how that happens.  Digital Detox Week isn't about quitting technology.  It's simply an invitation to notice how your days feel  with a little more breathing room.  Start small this week: - Try one phone-free hour today - Turn off non-essential notifications - Join our community forum for support  You don't have to do this alone.  — Digital Detox Week Team",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        1056,
+        -240
+      ],
+      "id": "53f252a9-713d-4bbc-ba30-3bbc07edcdb9",
+      "name": "High Risk Check1",
+      "webhookId": "9f88f764-02bf-4966-9518-7faa4f2ac4d8",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "2FfYB9CYkTDawHW2",
+          "name": "Gmail account 34"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "23a469fa-5b94-4c94-beb7-3aedd59402d0",
+              "leftValue": "={{$json[\"Screen Time\"]}}",
+              "rightValue": 8,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "ignoreCase": false
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        608,
+        0
+      ],
+      "id": "ef3554e9-2b1d-4e5e-94f4-6ea48c5c9b46",
+      "name": "High Risk Check"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "86b0bf71-a479-4d03-97d6-fe7bd7c39a31",
+              "leftValue": "={{$json[\"Screen Time\"]}}",
+              "rightValue": 4,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        816,
+        96
+      ],
+      "id": "2c68f229-8906-4871-8501-3b827f1a561d",
+      "name": "Moderate Check"
+    },
+    {
+      "parameters": {
+        "sendTo": "=bharathsree96@gmail.com",
+        "subject": "You're already ahead — help others get here too",
+        "message": "=Hi {{ $json.Name }},  You're already practicing healthy digital habits —  that's worth acknowledging.  Would you consider joining Digital Detox Week as a  community supporter? Your experience could inspire  others who are just starting out.  We'd love to have you with us.  — Digital Detox Week Team",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        1072,
+        208
+      ],
+      "id": "bf2854d1-f7e7-4e4c-9e67-c0faa4fd777d",
+      "name": "Low Usage Email",
+      "webhookId": "05424f20-3f59-4ad0-9534-0a5a450f76ab",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "2FfYB9CYkTDawHW2",
+          "name": "Gmail account 34"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "=bharathsree96@gmail.com",
+        "subject": "A week that could change how you feel",
+        "message": "=Hi {{ $json.Name }},  You're already more mindful than most — and that matters.  Here are a few ideas for Digital Detox Week: - Set a daily screen time limit for social apps - Try phone-free meals once a day - Replace 30 minutes of scrolling with something offline  Small changes add up more than you'd expect.  — Digital Detox Week Team",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        1072,
+        -16
+      ],
+      "id": "fd8455fd-550e-4ecd-8677-73830369eaad",
+      "name": "Moderate Check1",
+      "webhookId": "2ccd3f9b-3997-4d3a-b1db-9f531dbc1313",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "2FfYB9CYkTDawHW2",
+          "name": "Gmail account 34"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a595b849-df38-43bd-954e-ba6409153b38",
+              "name": "Name",
+              "value": "={{ $('Edit Fields').item.json.Name }}",
+              "type": "string"
+            },
+            {
+              "id": "id-2",
+              "name": "Age Group",
+              "value": "={{ $('Edit Fields').item.json['Age Group'] }}",
+              "type": "string"
+            },
+            {
+              "id": "id-3",
+              "name": "Screen Time",
+              "value": "={{ $('Edit Fields').item.json['Screen Time'] }}",
+              "type": "number"
+            },
+            {
+              "id": "id-4",
+              "name": "Participation",
+              "value": "={{ $('Edit Fields').item.json.Participation }}",
+              "type": "string"
+            },
+            {
+              "id": "id-5",
+              "name": "Category",
+              "value": "High Risk",
+              "type": "string"
+            },
+            {
+              "id": "id-6",
+              "name": "Email Status",
+              "value": "Email Sent",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1264,
+        -240
+      ],
+      "id": "88dc15c0-86a9-4be1-9c0e-d571b255776d",
+      "name": "Prepare High Risk Data"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2f74b5da-5c95-4710-800f-4e636993ef9e",
+              "name": "Name",
+              "value": "={{ $('Edit Fields').item.json.Name }}",
+              "type": "string"
+            },
+            {
+              "id": "08427ff6-704f-40bf-9562-576ebd13ef30",
+              "name": "Screen Time",
+              "value": "={{ $json[\"Screen Time\"] }}",
+              "type": "number"
+            },
+            {
+              "id": "22949bc5-146f-4e03-9c7f-2f0bc290096f",
+              "name": "Participation",
+              "value": "={{ $('Edit Fields').item.json.Participation }}",
+              "type": "string"
+            },
+            {
+              "id": "id-4",
+              "name": "Age Group",
+              "value": "={{ $('Edit Fields').item.json['Age Group'] }}",
+              "type": "string"
+            },
+            {
+              "id": "id-5",
+              "name": "Category",
+              "value": "Moderate",
+              "type": "string"
+            },
+            {
+              "id": "id-6",
+              "name": "Email Status",
+              "value": "Email Sent",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1280,
+        -16
+      ],
+      "id": "06aa0628-2c9d-4f82-99ef-c3a3c88035aa",
+      "name": "Prepare Moderate Data"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9e1244df-eb1f-4255-aadf-222bf79379c1",
+              "name": "Name",
+              "value": "={{ $('Edit Fields').item.json.Name }}",
+              "type": "string"
+            },
+            {
+              "id": "3e7eae4f-31fc-4610-9970-d7c0537287ac",
+              "name": "Screen Time",
+              "value": "={{ $json[\"Screen Time\"] }}",
+              "type": "number"
+            },
+            {
+              "id": "b15e1cea-8712-4061-82e6-7ba70623b605",
+              "name": "Participation",
+              "value": "={{ $('Edit Fields').item.json.Participation }}",
+              "type": "string"
+            },
+            {
+              "id": "id-4",
+              "name": "Age Group",
+              "value": "={{ $('Edit Fields').item.json['Age Group'] }}",
+              "type": "string"
+            },
+            {
+              "id": "id-5",
+              "name": "Category",
+              "value": "Low Usage",
+              "type": "string"
+            },
+            {
+              "id": "id-6",
+              "name": "Email Status",
+              "value": "Email Sent",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1280,
+        208
+      ],
+      "id": "20e1b29e-58a1-4121-8401-5bf3422068d7",
+      "name": "Prepare Low Usage Data"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "High Risk Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        []
+      ]
+    },
+    "High Risk Check1": {
+      "main": [
+        [
+          {
+            "node": "Prepare High Risk Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "High Risk Check": {
+      "main": [
+        [
+          {
+            "node": "High Risk Check1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Moderate Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Moderate Check": {
+      "main": [
+        [
+          {
+            "node": "Moderate Check1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Low Usage Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Low Usage Email": {
+      "main": [
+        [
+          {
+            "node": "Prepare Low Usage Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Moderate Check1": {
+      "main": [
+        [
+          {
+            "node": "Prepare Moderate Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare High Risk Data": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Moderate Data": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Low Usage Data": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "110cc993-3464-41af-9526-486987df9319",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "4ea9905a994d626ba22f117a5aba0eda955b66919ae2d0f3c49ffb1300d4055e"
+  },
+  "id": "cIqlGi7x9l8NOSTf",
+  "tags": []
+}
