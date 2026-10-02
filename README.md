@@ -116,16 +116,10 @@ Screen Time < 4 hrs → Low Usage email
 ---
 
 ## Project Structure
-
-├── AI_Programme_Final_Project.docx ← Full project documentation
-├── n8n_workflow.json ← Importable n8n workflow
-├── campaign_visuals/ ← 6 scene images
-│ ├── scene1_overstimulation.png
-│ ├── scene2_emotional_fatigue.png
-│ ├── scene3_realisation.png
-│ ├── scene4_life_beyond_screen.png
-│ ├── scene5_transformation.png
-│ └── scene6_call_to_action.png
+├── AI Programme · Final Project.docx
+├── Digital Detox Campaign (15).json
+├── Digital_Detox_Campaign_Slides_1.pptx
+├── Digital_Detox_Final_Project_1.pdf
 └── README.md
 
 
